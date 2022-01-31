@@ -1,0 +1,38 @@
+%%
+%public
+%class Lexer
+%unicode
+%type Token
+%line
+%column
+
+%{
+	
+%}
+
+%yylexthrow{
+	LexerException
+%yylexthrow}
+
+endline   	= \r|\n|\r\n
+space     	= {endline} | [ \t\f]
+var			= [:jletter:] [:jletterdigit:]*
+metadata	= "metadata." [^ \r\n\t\f]+
+quote 		= "\""
+path		= {quote}[^\"%{}]+{quote}
+include		= "include" {space} {path}
+
+%%
+
+<YYINITIAL> {
+	"{{"				{return new Token 	   (Sym.OPEN)			  ;}
+	"}}"				{return new Token	   (Sym.CLOSE)	  		  ;}
+	"{#"				{return new Token	   (Sym.EOPEN)			  ;}
+	"#}"				{return new Token	   (Sym.ECLOSE)			  ;}
+	"content"			{return new Token	   (Sym.CONTENT)		  ;}
+	{metadata}			{return new StringToken(Sym.META, 	 yytext());}
+	{include}			{return new StringToken(Sym.INCLUDE, yytext());}
+	
+	<<EOF>>				{return new Token	   (Sym.EOF)			  ;}
+	[^]					{return new StringToken(Sym.DATA, 	 yytext());}
+}

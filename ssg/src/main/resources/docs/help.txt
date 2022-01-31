@@ -1,0 +1,33 @@
+NAME
+    ssg build [OPTION] ... [FILE] ...
+
+DESCRIPTION
+    translate a .md FILE to the corresponding .html if a file is given
+    translate a directory to a website
+
+OPTIONS
+    --input-dir DIR
+        don't work with a FILE; specify another directory to translate
+    --output-dir DIR
+        specify the destination directory of the translation; default output DIR is _output/
+    --rebuild-all
+        disable incremental translation
+    --jobs N
+        create N child process to launch in parallel
+        by default launch as many child process as the computer's number of cores
+    --watch
+        Enable automatic compilation
+
+==========================================================================================
+
+NAME
+    ssg serve [OPTION] ...
+
+DESCRIPTION
+    compile a website from a directory and launch an HTTP server
+
+OPTIONS
+    --watch - automatic compilation - is enabled by default;
+        same options as 'ssg build [OPTION] ... [FILE]', with also :
+    --port N
+        specify a port; default port is 8080

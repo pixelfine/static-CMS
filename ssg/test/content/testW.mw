@@ -1,0 +1,43 @@
++++
+theme = "themeJaune"
+template = "indexJ.html"
+
+hello = "bonjour"
+
+[Account]
+username = "troll"
+password = "P R O T E C C"
+
++++
+
+''This is in italics'','''this is bold''','''''this is both'''''
+
+[https://www.wikipedia.org/ Wikipedia]
+
+Hello2<ref name="LoC">[https://www.loc.gov/about/ Library of Congress]</ref>
+
+<s>This topic isn't [[WP:N|notable]].</s>
+
+<!--This is a comment-->
+
+* One
+* Two
+** Two point one
+* Three
+
+==Level 2==
+===Level 3===
+====Level 4====
+=====Level 5=====
+======Level 6======
+
+# One
+# Two
+## Two point one
+# Three
+
+no indent (normal)
+:first indent
+::second indent
+:::third indent
+::::fourth indent

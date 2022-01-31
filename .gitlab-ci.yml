@@ -1,0 +1,27 @@
+image:
+  name: b5eb9fac17fe1f3a789b32dfe73a6a/ssg:v0.1
+
+stages:
+  - test
+  - build
+
+test:
+  variables:
+    JACOCO_CSV_LOCATION: '$CI_PROJECT_DIR/ssg/build/jacocoCsv'
+  stage: test
+  script:
+    - cd ssg; make unit
+    - awk -F"," '{ instructions += $4 + $5; covered += $5 } END { print covered, "/", instructions, " instructions covered"; print 100*covered/instructions, "% covered" }' $JACOCO_CSV_LOCATION
+
+build:
+  stage: build
+  script:
+    - cd ssg; gradle distZip; gradle jar
+  needs: [test]
+  artifacts:
+    expire_in: 4 weeks
+    paths:
+      - ssg/*
+  only:
+    - tags
+    - main

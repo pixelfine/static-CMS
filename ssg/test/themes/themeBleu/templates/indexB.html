@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="static/bleu.css">
+    <title>{{ metadata.title }}</title>
+  </head>
+  <body>
+    <div id="menu">{{ include "menuB.html" }}</div>
+	   <h1> TEMPLATE BLEU</h1>
+    <h1>{{ metadata.title }}</h1>
+    <h2>{{ metadata.date }}</h2>
+
+    <h3>{{ metadata.array1[0] }}</h3>
+    <h3>{{ metadata.array1[1] }}</h3>
+    <h3>{{ metadata.array1[2] }}</h3>
+
+    {% for category in categories %}
+        <p>{# category.name #}</p>
+    {% endfor %}
+
+
+    {% for file in list_files("./test", true) %}
+        <p>{# file #}</p>
+    {% endfor %}
+
+
+    <div id="article">{{ content }}</div>
+  </body>
+</html>

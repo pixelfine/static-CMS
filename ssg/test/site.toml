@@ -1,0 +1,14 @@
+theme = "theme1"
+template = "index.html"
+
+title = "A Minimal Site"
+author = "The SSG Team"
+
+categories = [
+	{name = "Accueil", url = "index.html"},
+	{name = "Nos pains", url = "pains/"},
+	{name = "A propos", url = "apropos.html"}
+]
+
+array1 = ["one","two","three"]
+array4 = [ [ 1.2, 2.4 , 3.3], ["all", 'strings', """are the same""", '''type'''] ]
